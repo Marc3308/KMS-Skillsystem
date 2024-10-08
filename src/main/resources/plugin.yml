@@ -1,0 +1,12 @@
+name: Arbeitundleben
+version: '${project.version}'
+main: me.marc3308.arbeitundleben.Arbeitundleben
+api-version: '1.20'
+authors: [Marc3308]
+description: Skillsystem
+
+commands:
+  switchskillgui:
+    description: chanches the interface
+  familiatree:
+    description: Open the skilltree of the familia
