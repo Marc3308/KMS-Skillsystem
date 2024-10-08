@@ -719,7 +719,8 @@ public class utilitys {
             }
         }
 
-        if(!(en instanceof Player))dmg*=utilitys.getcon(1).get(name+".schadengegenmobs")==null ? utilitys.getcon(1).getDouble("schadengegenmobs") : utilitys.getcon(1).getDouble(name+".schadengegenmobs");
+        if(!(en instanceof Player))dmg*=utilitys.getcon(1).get(name+".schadengegenmobs")==null ? utilitys.getcon(2).getDouble("schadengegenmobs") : utilitys.getcon(1).getDouble(name+".schadengegenmobs");
+        if(p.getPersistentDataContainer().has(new NamespacedKey("rassensystem", "infight"), PersistentDataType.DOUBLE))dmg/=getcon(2).getDouble("Grundkosten"+".Schadenimkampf");
         ((LivingEntity) en).damage(dmg);
         iskamp(p,Double.valueOf(utilitys.getcon(1).getInt(name+".Schaden")));
 
