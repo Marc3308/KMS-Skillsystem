@@ -719,16 +719,8 @@ public class utilitys {
             }
         }
 
-        System.out.println(dmg);
-
         if(!(en instanceof Player))dmg*=utilitys.getcon(1).get(name+".schadengegenmobs")==null ? utilitys.getcon(1).getDouble("schadengegenmobs") : utilitys.getcon(1).getDouble(name+".schadengegenmobs");
-
-        System.out.println(dmg);
-
         if(en.getPersistentDataContainer().has(new NamespacedKey("rassensystem", "infight"), PersistentDataType.DOUBLE))dmg*=(getcon(2).getDouble("Grundkosten"+".Schadenimkampf")/100);
-
-        System.out.println(dmg);
-
         ((LivingEntity) en).damage(dmg);
 
 
