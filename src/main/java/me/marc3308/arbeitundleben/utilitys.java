@@ -221,7 +221,7 @@ public class utilitys {
 
             if(p.getPersistentDataContainer().has(new NamespacedKey("arbeitundleben",skillslot), PersistentDataType.STRING)){
                 oj.getScore(i+": "+utilitys.getcon(1).getString(p.getPersistentDataContainer().get(new NamespacedKey("arbeitundleben",skillslot), PersistentDataType.STRING)+".AnzeigeName")).setScore(
-                        utilitys.getcon(1).getInt(p.getPersistentDataContainer().get(new NamespacedKey("arbeitundleben",skillslot), PersistentDataType.STRING)+".Kosten"));
+                        0);//utilitys.getcon(1).getInt(p.getPersistentDataContainer().get(new NamespacedKey("arbeitundleben",skillslot), PersistentDataType.STRING)+".Kosten")
             }
         }
 
@@ -719,9 +719,19 @@ public class utilitys {
             }
         }
 
-        if(!(en instanceof Player))dmg*=utilitys.getcon(1).get(name+".schadengegenmobs")==null ? utilitys.getcon(2).getDouble("schadengegenmobs") : utilitys.getcon(1).getDouble(name+".schadengegenmobs");
-        if(p.getPersistentDataContainer().has(new NamespacedKey("rassensystem", "infight"), PersistentDataType.DOUBLE))dmg/=getcon(2).getDouble("Grundkosten"+".Schadenimkampf");
+        System.out.println(dmg);
+
+        if(!(en instanceof Player))dmg*=utilitys.getcon(1).get(name+".schadengegenmobs")==null ? utilitys.getcon(1).getDouble("schadengegenmobs") : utilitys.getcon(1).getDouble(name+".schadengegenmobs");
+
+        System.out.println(dmg);
+
+        if(en.getPersistentDataContainer().has(new NamespacedKey("rassensystem", "infight"), PersistentDataType.DOUBLE))dmg*=(getcon(2).getDouble("Grundkosten"+".Schadenimkampf")/100);
+
+        System.out.println(dmg);
+
         ((LivingEntity) en).damage(dmg);
+
+
         iskamp(p,Double.valueOf(utilitys.getcon(1).getInt(name+".Schaden")));
 
     }
