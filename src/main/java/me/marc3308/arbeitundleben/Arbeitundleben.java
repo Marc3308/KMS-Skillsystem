@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.marc3308.arbeitundleben.utilitys.conmap;
+
 public final class Arbeitundleben extends JavaPlugin {
 
 
@@ -32,9 +34,27 @@ public final class Arbeitundleben extends JavaPlugin {
         //todo familia tp passiert was komisches
         //todo sniffer macht wirde dinge
 
-        //Plugin startup logic
+        //maby automate
         File file = new File("plugins/KMS Plugins/Arbeitundleben","Skills.yml");
         FileConfiguration con= YamlConfiguration.loadConfiguration(file);
+        conmap.put(1,con);
+
+        file = new File("plugins/KMS Plugins/Rassensystem","Rassen.yml");
+        FileConfiguration con2= YamlConfiguration.loadConfiguration(file);
+        conmap.put(2,con2);
+
+        file = new File("plugins/KMS Plugins/Klassensysteem","begleiterskilltree.yml");
+        FileConfiguration con3= YamlConfiguration.loadConfiguration(file);
+        conmap.put(3,con3);
+
+        file = new File("plugins/KMS Plugins/Klassensysteem","custemmodelds.yml");
+        FileConfiguration con4= YamlConfiguration.loadConfiguration(file);
+        conmap.put(4,con4);
+
+
+        //Plugin startup logic
+        file = new File("plugins/KMS Plugins/Arbeitundleben","Skills.yml");
+        con= YamlConfiguration.loadConfiguration(file);
 
         Bukkit.getPluginManager().registerEvents(new gui(),this);
         Bukkit.getPluginManager().registerEvents(new onjoin(),this);
@@ -115,7 +135,6 @@ public final class Arbeitundleben extends JavaPlugin {
             con.set("greaterteleportation"+".Freiehande","twohand");
 
         }
-
 
         try {
             con.save(file);

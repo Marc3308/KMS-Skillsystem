@@ -39,6 +39,8 @@ public class utilitys {
 
     public static HashMap<Location, BlockData> locmap=new HashMap<>();
 
+    public static HashMap<Integer,FileConfiguration> conmap=new HashMap<>();
+
     public static void activateskills(Player p,String name){
 
         switch (name){
@@ -775,22 +777,8 @@ public class utilitys {
     }
 
     public static FileConfiguration getcon(Integer num){
-
-        File file = new File("plugins/KMS Plugins/Arbeitundleben","Skills.yml");
-        FileConfiguration con= YamlConfiguration.loadConfiguration(file);
-
-        file = new File("plugins/KMS Plugins/Rassensystem","Rassen.yml");
-        FileConfiguration con2= YamlConfiguration.loadConfiguration(file);
-
-        file = new File("plugins/KMS Plugins/Klassensysteem","begleiterskilltree.yml");
-        FileConfiguration con3= YamlConfiguration.loadConfiguration(file);
-
-        file = new File("plugins/KMS Plugins/Klassensysteem","custemmodelds.yml");
-        FileConfiguration con4= YamlConfiguration.loadConfiguration(file);
-
-
-        return num==1 ? con : num==2 ? con2 : num==3 ? con3 : con4;
-
+        return conmap.get(num);
+        //return num==1 ? con : num==2 ? con2 : num==3 ? con3 : con4;
     }
 
     public static LivingEntity getfamilia(Player p){
